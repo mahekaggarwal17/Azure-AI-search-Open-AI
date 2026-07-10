@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aether Cognition — Cybernetic Document Knowledge Console</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- S-Tier Cursor Trail -->
+    <div class="cursor-trail" id="cursorTrail"></div>
+
+    <!-- Background Aurora Blurs -->
+    <div class="aurora-glow-1" id="aurora1"></div>
+    <div class="aurora-glow-2" id="aurora2"></div>
+    <div class="aurora-glow-3" id="aurora3"></div>
+
+    <div class="site-frame">
+        <div class="cozy-canvas">
+            
+            <!-- ==========================================================
+                 NAVIGATION BAR
+                 ========================================================== -->
+            <header class="navbar fade-in-stagger" style="--stagger: 1;">
+                <a href="#" class="brand-logo">
+                    <div class="neural-core-icon">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" stroke="currentColor" stroke-width="6" stroke-dasharray="10 6" />
+                            <circle cx="50" cy="50" r="28" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="4" />
+                            <circle cx="50" cy="50" r="10" fill="currentColor" />
+                            <line x1="50" y1="5" x2="50" y2="95" stroke="currentColor" stroke-width="2" />
+                            <line x1="5" y1="50" x2="95" y2="50" stroke="currentColor" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <span class="brand-name">Aether Cognition</span>
+                </a>
+
+                <nav class="nav-links">
+                    <a href="#hero" class="nav-item active">Overview</a>
+                    <a href="#doc-workspace" class="nav-item">Ingestion Deck</a>
+                    <a href="#ai-assistant" class="nav-item">RAG Console</a>
+                    <a href="/docs" target="_blank" class="nav-item">System API</a>
+                </nav>
+
+                <div class="nav-actions">
+                    <div class="star-badge" title="Factual Grounding Benchmark">
+                        <span>★ 99.4% Grounded Fidelity</span>
+                    </div>
+
+                    <div class="cart-pill" title="Live Knowledge Index">
+                        <span>🟢 Semantic Index Active</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ==========================================================
+                 MOSAIC DOUBLE-HELIX HERO SECTION
+                 ========================================================== -->
+            <section class="mosaic-hero" id="hero">
+                <!-- Left Title & Brand Column -->
+                <div class="mosaic-left-col fade-in-stagger" style="--stagger: 2;">
+                    <h1 class="mosaic-brand-title">AETHER</h1>
+                    <div class="mosaic-cta-box">
+                        <h2 class="mosaic-tagline">Neural Retrieval &amp;<br>Document RAG Console</h2>
+                        <p class="mosaic-subtitle">Next-generation semantic indexing and zero-hallucination document grounding studio.</p>
+                        <button class="cta-orange-btn magnetic-target" onclick="scrollToDocWorkspace()">
+                            <span>Launch RAG Deck</span>
+                            <div class="btn-arrow-circle">→</div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Wave Area -->
+                <div class="mosaic-wave-area fade-in-stagger" style="--stagger: 3;">
+                    <!-- Top bound marker -->
+                    <div class="mosaic-marker top-marker">
+                        <div class="marker-dot"></div>
+                        <span class="marker-text">EMBEDDINGS + 1536d</span>
+                    </div>
+
+                    <!-- The Double-Helix Container -->
+                    <div class="mosaic-wave-container" id="waveContainer">
+                        <!-- Dynamic cells injected via JS -->
+                    </div>
+
+                    <!-- Bottom bound marker -->
+                    <div class="mosaic-marker bottom-marker">
+                        <div class="marker-dot"></div>
+                        <span class="marker-text">FIDELITY + 99.4%</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================================
+                 DOCUMENT INGESTION & LIVE PREVIEW WORKSPACE
+                 ========================================================== -->
+            <section class="document-workspace-section fade-in-stagger" style="--stagger: 4;" id="doc-workspace">
+                <div class="section-header">
+                    <div class="ai-badge">
+                        <span class="pulse-dot"></span>
+                        <span>Step 1 • Document Ingestion Engine</span>
+                    </div>
+                    <h2>Cognitive Ingestion Deck</h2>
+                    <p>Load custom document units (.pdf, .docx, .txt) or mount pre-indexed sample corporate sources into active vector storage.</p>
+                </div>
+
+                <!-- Sample Document Switcher Bar -->
+                <div class="sample-switcher-bar">
+                    <span class="switcher-label">Mount Active Corpus:</span>
+                    <button class="sample-btn active" onclick="loadSampleDocument('Global_Enterprise_AI_Report_2026.pdf', this)">
+                        📄 AI Strategy Report (PDF)
+                    </button>
+                    <button class="sample-btn" onclick="loadSampleDocument('Q4_Financial_Performance_Analysis.docx', this)">
+                        📑 Q4 Financial Analysis (DOCX)
+                    </button>
+                    <button class="sample-btn" onclick="loadSampleDocument('Cloud_Security_Compliance_Specification.pdf', this)">
+                        🔒 Security Specification (PDF)
+                    </button>
+                </div>
+
+                <div class="document-grid">
+                    
+                    <!-- Left: Upload Box -->
+                    <div class="doc-upload-box" id="dropZone">
+                        <div class="upload-icon-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                        </div>
+                        <h3>Upload Custom Document</h3>
+                        <p>Drag and drop local document here, or click to query file explorer</p>
+                        <span class="upload-sub">PDF, DOCX, TXT formats supported</span>
+                        <input type="file" id="fileInput" accept=".pdf,.docx,.doc,.txt" style="display:none;" onchange="handleFileUpload(event)">
+                        <button class="upload-browse-btn magnetic-target" onclick="document.getElementById('fileInput').click()">Browse Files</button>
+                    </div>
+
+                    <!-- Right: Live Document Preview Card -->
+                    <div class="doc-preview-card" id="docPreviewCard">
+                        <div class="preview-header">
+                            <div class="doc-title-row">
+                                <span class="file-type-pill" id="docTypePill">PDF</span>
+                                <h4 id="docTitle">Global_Enterprise_AI_Report_2026.pdf</h4>
+                            </div>
+                            <span class="doc-status-badge">✓ Vectorized &amp; Loaded</span>
+                        </div>
+
+                        <div class="preview-stats">
+                            <div class="p-stat">
+                                <span class="p-val" id="docPages">18</span>
+                                <span class="p-lbl">Logical Pages</span>
+                            </div>
+                            <div class="p-stat">
+                                <span class="p-val" id="docChunks">12</span>
+                                <span class="p-lbl">High-Dim Chunks</span>
+                            </div>
+                            <div class="p-stat">
+                                <span class="p-val">100%</span>
+                                <span class="p-lbl">Grounding Ready</span>
+                            </div>
+                        </div>
+
+                        <div class="preview-body-box">
+                            <h5>Decoded Context Stream:</h5>
+                            <p id="docPreviewText">
+                                Executive Summary: The 2026 Enterprise AI &amp; Automation Report outlines a 45% productivity surge across organizations deploying grounded Retrieval-Augmented Generation (RAG) pipelines. Key strategic pillars include multi-modal document understanding, real-time vector indexing, and zero-data-retention privacy protocols across distributed teams...
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ==========================================================
+                 INTEGRATED RAG CHAT COPILOT & CITATION INSPECTOR
+                 ========================================================== -->
+            <section class="ai-assistant-section fade-in-stagger" style="--stagger: 5;" id="ai-assistant">
+                <div class="section-header">
+                    <div class="ai-badge">
+                        <span class="pulse-dot"></span>
+                        <span>Step 2 • Cognitive Retrieval &amp; Synthesis Console</span>
+                    </div>
+                    <h2>Document RAG Chat Console</h2>
+                    <p>Issue natural language prompts against the mounted document. The system will retrieve optimal paragraph matches and synthesize answers.</p>
+                </div>
+
+                <!-- Starter Prompt Chips -->
+                <div class="prompt-chips">
+                    <button class="prompt-chip" onclick="askDirectPrompt('📊 Summarize key findings from the uploaded document')">
+                        <span>📊 Summarize key findings from the uploaded document</span>
+                    </button>
+                    <button class="prompt-chip" onclick="askDirectPrompt('🔍 Extract critical risks & recommendations')">
+                        <span>🔍 Extract critical risks &amp; recommendations</span>
+                    </button>
+                    <button class="prompt-chip" onclick="askDirectPrompt('💡 What are the main strategic objectives?')">
+                        <span>💡 What are the main strategic objectives?</span>
+                    </button>
+                </div>
+
+                <!-- RAG Console & Citation Inspector Grid -->
+                <div class="rag-workspace-grid">
+                    
+                    <!-- Main Chat Stream -->
+                    <div class="chat-console">
+                        <div class="chat-header">
+                            <span class="console-title">Document Intelligence Copilot</span>
+                            <span class="active-doc-indicator" id="chatDocIndicator">📄 Active: Global_Enterprise_AI_Report_2026.pdf</span>
+                            <button class="clear-btn" onclick="clearChat()">Clear Console</button>
+                        </div>
+
+                        <div class="chat-messages" id="chatStream">
+                            <div class="message assistant-msg">
+                                <div class="msg-avatar">⚡</div>
+                                <div class="msg-content">
+                                    <div class="markdown-body">
+                                        <h3>Ready to Analyze Your Document</h3>
+                                        <p>I am actively indexed on your document. Ask any question to retrieve grounded answers!</p>
+                                        <ul>
+                                            <li><strong>Document Grounding:</strong> Answers are constructed strictly from document passages.</li>
+                                            <li><strong>Interactive Citations:</strong> Inspect retrieved source passages on the right-hand panel.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form class="chat-form" id="chatForm" onsubmit="handleFormSubmit(event)">
+                            <div class="input-container">
+                                <textarea 
+                                    id="chatInput" 
+                                    class="chat-input" 
+                                    placeholder="Ask anything about the active document..." 
+                                    rows="1"
+                                    onkeydown="handleKeydown(event)"
+                                ></textarea>
+                                <button type="submit" class="send-btn magnetic-target" id="sendBtn">
+                                    <span>Execute RAG Query</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Right Citation Inspector Drawer -->
+                    <aside class="inspector-drawer">
+                        <div class="inspector-header">
+                            <div class="inspector-title">
+                                <span>Retrieved Citations</span>
+                            </div>
+                            <span class="chunk-badge" id="chunkBadge">Ready</span>
+                        </div>
+                        <p class="inspector-desc">High-dimensional similarity coordinates and citation passages matching your current search query.</p>
+
+                        <!-- Live Vector Similarity Space Visualizer Canvas -->
+                        <div class="vector-visualizer-container">
+                            <canvas id="vectorCanvas"></canvas>
+                        </div>
+
+                        <div class="chunk-list" id="chunkContainer">
+                            <div class="empty-inspector">
+                                <p>No search executed yet.</p>
+                                <span>Execute a RAG query to visualize vector coordinates and inspect retrieved text chunks.</span>
+                            </div>
+                        </div>
+                    </aside>
+
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="site-footer">
+                <p>© 2026 Aether Cognition • Advanced Document Cognitive Engine &amp; High-Dimensional Vector Search</p>
+            </footer>
+
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
